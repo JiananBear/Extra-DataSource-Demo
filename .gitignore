@@ -1,0 +1,16 @@
+*.class
+*.log
+*.iml
+
+# sbt specific
+.idea/libraries
+target/
+
+.idea/*
+
+#.gitignore
+.idea/
+#bin/
+metastore_db/
+project/
+#src/
