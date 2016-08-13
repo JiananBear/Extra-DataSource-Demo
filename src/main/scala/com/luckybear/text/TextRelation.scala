@@ -1,6 +1,6 @@
-package com.haizhi.text
+package com.luckybear.text
 
-import com.haizhi.CusTextInputFormat
+import com.luckybear.CusTextInputFormat
 import org.apache.hadoop.fs.Path
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapred.JobConf
@@ -15,7 +15,7 @@ import org.apache.spark.sql.{Row, SQLContext}
 /**
   * Created by luckybear on 16/8/3.
   */
-
+// 最简单的实现
 class DefaultSource extends RelationProvider with DataSourceRegister {
   override def shortName(): String = "bdptext"
 

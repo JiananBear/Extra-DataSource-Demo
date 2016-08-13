@@ -1,6 +1,6 @@
-package com.haizhi.text1
+package com.luckybear.improved
 
-import com.haizhi.{CusTextInputFormat, CusTextOutputFormat}
+import com.luckybear.{CusTextInputFormat, CusTextOutputFormat}
 import org.apache.hadoop.fs.{FileStatus, Path}
 import org.apache.hadoop.io.{LongWritable, NullWritable, Text}
 import org.apache.hadoop.mapred.JobConf
@@ -15,15 +15,15 @@ import org.apache.spark.sql.{Row, SQLContext}
 /**
   * Created by luckybear on 16/8/12.
   */
-
+// 支持DataFrameWriter 写入数据的方式
 class DefaultSource extends HadoopFsRelationProvider with DataSourceRegister {
   override def createRelation(sqlContext: SQLContext, paths: Array[String], dataSchema: Option[StructType], partitionColumns: Option[StructType], parameters: Map[String, String]): HadoopFsRelation = {
-    new TextRelation1(paths, parameters)(sqlContext)
+    new ImprovedTextRelation(paths, parameters)(sqlContext)
   }
   override def shortName(): String = "bear"
 }
 
-class TextRelation1(override val paths: Array[String], parameters: Map[String, String] = Map.empty[String, String])(@transient val sqlContext: SQLContext) extends HadoopFsRelation {
+class ImprovedTextRelation(override val paths: Array[String], parameters: Map[String, String] = Map.empty[String, String])(@transient val sqlContext: SQLContext) extends HadoopFsRelation {
 
   val tableSchema = parameters.getOrElse("table_schema", "value")
 
